@@ -43,12 +43,10 @@ def main(winstyle=0):
     winstyle = 0 # |FULLSCREEN
 
     # checks whether display mode is avaliable
-    bestdepth = pygame.display.mode_ok(SCREENRECT.size,
-    winstyle,32)
+    bestdepth = pygame.display.mode_ok(SCREENRECT.size, winstyle,32)
     # This function will create a display Surface
     # Initialize a window or screenfor display
-    screen = pygame.display.set_mode(SCREENRECT.size,
-    winstyle,bestdepth)
+    screen = pygame.display.set_mode(SCREENRECT.size, winstyle,bestdepth)
 
     set_game_obj_images()
 
@@ -99,6 +97,9 @@ def main(winstyle=0):
         all_game_rects.add(PlayerLives())
         all_game_rects.add(GameLevel())
 
+
+    print("starting the game")
+
     game_loop(all_game_rects, screen, background, shots, last_alien, aliens, bombs, winstyle, bestdepth, FULLSCREEN)
 
 
@@ -132,7 +133,7 @@ def check_game_level(score):
     elif(GameLevel.level == 3 and score > 29):
         GameLevel.level = 4
     elif(GameLevel.level == 4 and score > 39):
-        GameLeve.level = 5
+        GameLevel.level = 5
     elif(GameLevel.level == 5 and score >49):
         GameLevel.level = 6
     elif(GameLevel.level == 6 and score > 59):
@@ -185,7 +186,8 @@ def game_loop(all_game_rects, screen, background, shots, last_alien, aliens, bom
                         screen.blit(screen_backup, (0, 0))
                         pygame.display.flip()
                         FULSCREEN = not FULLSCREEN
-
+        print("in the game loop")
+        
         all_game_rects.clear(screen, background)
 
         all_game_rects.update()
